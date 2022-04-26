@@ -1,0 +1,72 @@
+.cont{
+    /* border: 10px solid black; */
+    width: 100%;
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: row;
+  }
+  .image_left {
+    width: 100vw;
+    height: 100vh;
+    background-repeat: no-repeat;
+    /* background-image: url(../../../public/assets/Photos/bg1.svg); */
+    background-size: 100% 100%;
+  }
+  .image_right {
+    width: 100vw;
+    height: 100vh;
+    /* background-image: url(../../../public/assets/Photos/bg3.svg); */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .image3
+{
+  width: 100%;
+  height:100vh;
+  /* border: 5px solid green; */
+/* background-image: url(./success.png); */
+background-repeat: no-repeat;
+background-size: contain;
+overflow-y: hidden;
+background-size: 100% 100%;
+align-items: center;
+
+}
+.image4
+{
+  width: 100%;
+  height:100vh;
+  /* border: 5px solid green; */
+/* background-image: url(./last_wave.png); */
+background-repeat: no-repeat;
+background-size: contain;
+overflow-y: hidden;
+background-size: 100% 100%;
+align-items: center;
+
+}
+
+  .text{
+    margin-top: 1.5rem;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    
+  }
+  .heading{
+    text-align: center;
+    
+  }
+  @media (max-width: 450px) {
+    .cont{
+
+      display: flex;
+      flex-direction: column;
+    }
+    .text{
+        align-items: center;
+    }
+}
