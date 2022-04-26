@@ -16,8 +16,8 @@ function Reg() {
   const [Residence, setResidence] = useState("");
   const Navigate = useNavigate();
 
-  var checkStatus = false;
-  var checkStatusAll = false;
+  // var checkStatus = false;
+  // var checkStatusAll = false;
   const [formErrors, setFormErrors] = useState({});
   const [formErrorsEmail, setFormErrorsEmail] = useState({});
   const [formErrorsName, setformErrorsName] = useState({});
@@ -41,6 +41,7 @@ function Reg() {
     formErrorsBranch,
     formErrorsContactno,
     formErrorsRoll,
+    formErrorsEmail,
     isSubmit,
   ]);
 
@@ -129,7 +130,8 @@ function Reg() {
           console.log(err);
           window.alert("user already registered!!!");
         });
-    } else {
+    } 
+    else {
       console.log("Enter Data in all Fields");
     }
   };
@@ -142,9 +144,11 @@ function Reg() {
       errors.Email = "Email is required!";
     } else if (!regex.test(value)) {
       errors.Email = "This is not a valid email format!";
-    } else {
-      checkStatus = true;
-    }
+    } 
+    // else
+    // //  {
+    // //   checkStatus = true;
+    // // }
     return errors;
   };
 
@@ -160,9 +164,10 @@ function Reg() {
     else if (!regexi.test(value)) {
       errors.Name = "Name should be minimum of 3 charachters and maximum of 29";
     } 
-    else {
-      checkStatusAll = true;
-    }
+    else
+    //  {
+    //   checkStatusAll = true;
+    // }
     return errors;
   };
   const validateRoll = (value) => {
@@ -176,9 +181,10 @@ function Reg() {
     }
     else if (!regexi.test(value)) {
       errors.Rollno = "Maximum length of roll number is 13 digits";
-    } else {
-      checkStatusAll = true;
-    }
+    } else
+    //  {
+    //   checkStatusAll = true;
+    // }
     return errors;
   };
 
@@ -186,7 +192,7 @@ function Reg() {
 
   const validateContactno = (value) => {
     const errors = {};
-    let regex = new RegExp("^[0-9]$");
+    // let regex = new RegExp("^[0-9]$");
     let regexi = new RegExp("^[0-9]{10}$");
     if (!value) {
       errors.Contactno = "Contact  number is required!";
@@ -196,9 +202,10 @@ function Reg() {
     // else if (!regexi.test(value)) {
     //   errors.Contactno = "Contact  number should be of 10 digits";
     // }
-     else {
-      checkStatusAll = true;
-    }
+     else
+    //   {
+    //   checkStatusAll = true;
+    // }
     return errors;
   };
 
@@ -206,9 +213,10 @@ function Reg() {
     const errors = {};
     if (!value) {
       errors.Branch = "Branch is required!";
-    } else {
-      checkStatusAll = true;
     }
+    // else {
+    //   checkStatusAll = true;
+    // }
     return errors;
   };
 
@@ -216,9 +224,10 @@ function Reg() {
     const errors = {};
     if (!value) {
       errors.Gender = "Gender is required!";
-    } else {
-      checkStatusAll = true;
     }
+    //  else {
+    //   checkStatusAll = true;
+    // }
     return errors;
   };
 
@@ -226,9 +235,10 @@ function Reg() {
     const errors = {};
     if (!value) {
       errors.Year = "Year is Required!";
-    } else {
-      checkStatusAll = true;
-    }
+    } 
+    // else {
+    //   checkStatusAll = true;
+    // }
     return errors;
   };
   function onChange(value) {
