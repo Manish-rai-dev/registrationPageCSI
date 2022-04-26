@@ -16,8 +16,8 @@ function Reg() {
   const [Residence, setResidence] = useState("");
   const Navigate = useNavigate();
 
-  // var checkStatus = false;
-  // var checkStatusAll = false;
+  var checkStatus = false;
+  var checkStatusAll = false;
   const [formErrors, setFormErrors] = useState({});
   const [formErrorsEmail, setFormErrorsEmail] = useState({});
   const [formErrorsName, setformErrorsName] = useState({});
@@ -113,8 +113,10 @@ function Reg() {
         Gender: Gender,
         Residence: Residence,
       };
+      if(checkStatus===true && checkStatusAll===true)
 
-      console.log(newEntry);
+
+      {console.log(newEntry);}
       axios
         .post(
           "https://nameless-citadel-14148.herokuapp.com/api/users/register",
@@ -146,10 +148,10 @@ function Reg() {
     } else if (!regex.test(value)) {
       errors.Email = "This is not a valid email format!";
     } 
-    // else
-    // //  {
-    // //   checkStatus = true;
-    // // }
+    else
+     {
+      checkStatus = true;
+    }
     return errors;
   };
 
@@ -166,9 +168,9 @@ function Reg() {
       errors.Name = "Name should be minimum of 3 charachters and maximum of 29";
     } 
     else
-    //  {
-    //   checkStatusAll = true;
-    // }
+     {
+      checkStatusAll = true;
+    }
     return errors;
   };
   const validateRoll = (value) => {
@@ -183,9 +185,9 @@ function Reg() {
     else if (!regexi.test(value)) {
       errors.Rollno = "Maximum length of roll number is 13 digits";
     } else
-    //  {
-    //   checkStatusAll = true;
-    // }
+     {
+      checkStatusAll = true;
+    }
     return errors;
   };
 
@@ -204,9 +206,9 @@ function Reg() {
     //   errors.Contactno = "Contact  number should be of 10 digits";
     // }
      else
-    //   {
-    //   checkStatusAll = true;
-    // }
+      {
+      checkStatusAll = true;
+    }
     return errors;
   };
 
@@ -215,9 +217,9 @@ function Reg() {
     if (!value) {
       errors.Branch = "Branch is required!";
     }
-    // else {
-    //   checkStatusAll = true;
-    // }
+    else {
+      checkStatusAll = true;
+    }
     return errors;
   };
 
@@ -226,9 +228,9 @@ function Reg() {
     if (!value) {
       errors.Gender = "Gender is required!";
     }
-    //  else {
-    //   checkStatusAll = true;
-    // }
+     else {
+      checkStatusAll = true;
+    }
     return errors;
   };
 
@@ -237,9 +239,9 @@ function Reg() {
     if (!value) {
       errors.Year = "Year is Required!";
     } 
-    // else {
-    //   checkStatusAll = true;
-    // }
+    else {
+      checkStatusAll = true;
+    }
     return errors;
   };
   function onChange(value) {
