@@ -48,6 +48,7 @@ function Reg() {
   const handleFocusEmail = (e) => {
     setFocused(true);
     setFormErrorsEmail(validateEmail(Email));
+    setFormErrors(validateEmail(Email));
   };
 
   const handleFocusName = (e) => {
