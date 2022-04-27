@@ -3,6 +3,7 @@ import "./Reg.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
+// import recaptcha from "react-google-recaptcha/lib/recaptcha";
 
 
 function Reg() {
@@ -28,6 +29,7 @@ function Reg() {
   const [formErrorsGender, setformErrorsGender] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
   const [focused, setFocused] = useState(false);
+  // const reRef = useRef(null);
 
   useEffect(() => {
     // console.log(formErrors);
@@ -101,7 +103,8 @@ function Reg() {
       Branch &&
       Year &&
       Gender &&
-      Residence
+      Residence &&
+      ReCAPTCHA
     ) {
       const newEntry = {
         Name: Name,
@@ -112,11 +115,17 @@ function Reg() {
         Year: Number(Year),
         Gender: Gender,
         Residence: Residence,
+        ReCAPTCHA
       };
       if(checkStatus===true && checkStatusAll===true)
 
+      
 
       {console.log(newEntry);}
+      // const token = await reRef.current.executeAsync();
+
+
+
       axios
         .post(
           "https://nameless-citadel-14148.herokuapp.com/api/users/register",
@@ -133,6 +142,13 @@ function Reg() {
           console.log(err);
           window.alert("user already registered!!!");
         });
+
+      axios
+        .post("https://nameless-citadel-14148.herokuapp.com/api/users/captcha",ReCAPTCHA)
+        .then((resp) => {
+          console.log(resp.data);
+        })
+
     } 
     else {
       console.log("Enter Data in all Fields");
@@ -157,10 +173,10 @@ function Reg() {
 
   const validateName = (value) => {
     const errors = {};
-    let regex = new RegExp("^[A-Za-z]+$");
+    let regex = new RegExp("^[A-Za-z ,.'-]+$");
     let regexi = new RegExp("^[A-Za-z]{3,29}$");
     if (!value) {
-      errors.Name = "name is required!";
+      errors.Name = "Name is required!";
     } else if (!regex.test(value)) {
       errors.Name = "Name should only include alphabets";
     } 
@@ -372,7 +388,7 @@ function Reg() {
               
               <span className="error_msg">{formErrorsYear.Year}</span>
             </div>
-            <div className="d-flex justify-content-center">
+            <div className="d-flex justify-content-center input_container">
               <div className="justify">
                 <div className="radio">
                   <span className="radio_text">Hosteler</span>
@@ -398,11 +414,11 @@ function Reg() {
                 </div>
               </div>
             </div>
-            <div className="captcha">
+            <div className="captcha input_container">
             <ReCAPTCHA
             className="field"
-    sitekey="6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI" 
-    onChange={onChange}
+    sitekey="6Lf2daYfAAAAAExs6pda6OgCNgPjSE0zgimsianx" 
+     onChange={onChange}
   />
             </div>
   
